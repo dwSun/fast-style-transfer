@@ -112,7 +112,7 @@ def ffwd(data_in, paths_out, checkpoint_dir, device_t='/gpu:0', batch_size=4):
                     img = get_img(path_in)
                     assert img.shape == img_shape, \
                         'Images have different dimensions. ' +  \
-                        'Resize images or use --allow-different-dimensions.'
+                        'Resize images or use --allow_different_dimensions.'
                     X[j] = img
             else:
                 X = data_in[pos:pos+batch_size]
@@ -153,12 +153,12 @@ def build_parser():
                         help='dir or .ckpt file to load checkpoint from',
                         metavar='CHECKPOINT', required=True)
 
-    parser.add_argument('--in-path', type=str,
+    parser.add_argument('--in_path', type=str,
                         dest='in_path',help='dir or file to transform',
                         metavar='IN_PATH', required=True)
 
     help_out = 'destination (dir or file) of transformed file or files'
-    parser.add_argument('--out-path', type=str,
+    parser.add_argument('--out_path', type=str,
                         dest='out_path', help=help_out, metavar='OUT_PATH',
                         required=True)
 
@@ -166,11 +166,11 @@ def build_parser():
                         dest='device',help='device to perform compute on',
                         metavar='DEVICE', default=DEVICE)
 
-    parser.add_argument('--batch-size', type=int,
+    parser.add_argument('--batch_size', type=int,
                         dest='batch_size',help='batch size for feedforwarding',
                         metavar='BATCH_SIZE', default=BATCH_SIZE)
 
-    parser.add_argument('--allow-different-dimensions', action='store_true',
+    parser.add_argument('--allow_different_dimensions', action='store_true',
                         dest='allow_different_dimensions', 
                         help='allow different image dimensions')
 
